@@ -2,7 +2,7 @@ module.exports = ({ env }) => ({
   proxy: true,
   host: "0.0.0.0",
   port: process.env.PORT,
-  url: 'http://strapi.qafto.in',
+  url: 'http://mystrapi.qafto.in',
   app: { 
     keys: env.array('APP_KEYS')
   },
