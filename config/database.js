@@ -1,5 +1,19 @@
 const path = require('path');
 
+// module.exports = ({ env }) => ({
+//   connection: {
+//     client: 'postgres',
+//     connection: {
+//       host: env('DATABASE_HOST', 'localhost'),
+//       port: env.int('DATABASE_PORT', 5432),
+//       database: env('DATABASE_NAME', 'myAppDB'),
+//       user: env('DATABASE_USERNAME', 'postgres'),
+//       password: env('DATABASE_PASSWORD', 'password'),
+//       schema: env('DATABASE_SCHEMA', 'public'), // Not required
+//     },
+//     debug: false,
+//   },
+// });
 module.exports = ({ env }) => {
   const client = env('DATABASE_CLIENT', 'sqlite');
 
@@ -8,10 +22,10 @@ module.exports = ({ env }) => {
       connection: {
         connectionString: env('DATABASE_URL'),
         host: env('DATABASE_HOST', 'localhost'),
-        port: env.int('DATABASE_PORT', 3306),
-        database: env('DATABASE_NAME', 'strapi'),
-        user: env('DATABASE_USERNAME', 'strapi'),
-        password: env('DATABASE_PASSWORD', 'strapi'),
+        port: env.int('DATABASE_PORT', 5050),
+        database: env('DATABASE_NAME', 'test'),
+        user: env('DATABASE_USERNAME', 'testuser'),
+        password: env('DATABASE_PASSWORD', '1234'),
         ssl: env.bool('DATABASE_SSL', false) && {
           key: env('DATABASE_SSL_KEY', undefined),
           cert: env('DATABASE_SSL_CERT', undefined),
@@ -49,12 +63,13 @@ module.exports = ({ env }) => {
     },
     postgres: {
       connection: {
-        connectionString: env('DATABASE_URL'),
-        host: env('DATABASE_HOST', 'localhost'),
+        // connectionString: env('DATABASE_URL', "postgres://postgres:780cfcb54610e80d0bedebc5765ff54c@dokku-postgres-myAppDB:5432/myAppDB"),
+        connectionString: env('DATABASE_URL', "postgres://postgres:780cfcb54610e80d0bedebc5765ff54c@65.1.94.83:3115/myAppDB"),
+        host: env('DATABASE_HOST', '65.1.94.83'),
         port: env.int('DATABASE_PORT', 5432),
-        database: env('DATABASE_NAME', 'strapi'),
-        user: env('DATABASE_USERNAME', 'strapi'),
-        password: env('DATABASE_PASSWORD', 'strapi'),
+        database: env('DATABASE_NAME', 'myAppDB'),
+        user: env('DATABASE_USERNAME', 'postgres'),
+        password: env('DATABASE_PASSWORD', '780cfcb54610e80d0bedebc5765ff54c'),
         ssl: env.bool('DATABASE_SSL', false) && {
           key: env('DATABASE_SSL_KEY', undefined),
           cert: env('DATABASE_SSL_CERT', undefined),
