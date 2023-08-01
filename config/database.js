@@ -65,11 +65,12 @@ module.exports = ({ env }) => {
       connection: {
         // connectionString: env('DATABASE_URL', "postgres://postgres:780cfcb54610e80d0bedebc5765ff54c@dokku-postgres-myAppDB:5432/myAppDB"),
         connectionString: env('DATABASE_URL', "postgres://postgres:780cfcb54610e80d0bedebc5765ff54c@65.1.94.83:3115/myAppDB"),
+        // connectionString: env('DATABASE_URL', "postgres://postgres:90795ee4a350666418cfc8381f99f4e8@65.1.94.83:7181/newPostgresDB"),
         host: env('DATABASE_HOST', '65.1.94.83'),
-        port: env.int('DATABASE_PORT', 5432),
-        database: env('DATABASE_NAME', 'myAppDB'),
+        port: env.int('DATABASE_PORT', 7181),
+        database: env('DATABASE_NAME', 'newPostgresDB'),
         user: env('DATABASE_USERNAME', 'postgres'),
-        password: env('DATABASE_PASSWORD', '780cfcb54610e80d0bedebc5765ff54c'),
+        password: env('DATABASE_PASSWORD', '90795ee4a350666418cfc8381f99f4e8'),
         ssl: env.bool('DATABASE_SSL', false) && {
           key: env('DATABASE_SSL_KEY', undefined),
           cert: env('DATABASE_SSL_CERT', undefined),
