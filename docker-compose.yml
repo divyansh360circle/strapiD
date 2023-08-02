@@ -3,7 +3,7 @@ version: "3"
 services:
 
   react:
-    container_name: docker_test
+    container_name: docker_strapi
     image: node:18-alpine
     build: ./
     volumes:
