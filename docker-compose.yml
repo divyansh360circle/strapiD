@@ -1,14 +1,53 @@
 version: "3"
-
 services:
-
-  react:
-    container_name: docker_strapi
+  strapi:
+    container_name: strapi
+    build: .
     image: node:18-alpine
-    build: ./
+    restart: unless-stopped
+    # env_file: .env
+    # environment:
+    #   DATABASE_CLIENT: ${DATABASE_CLIENT}
+    #   DATABASE_HOST: strapiDB
+    #   DATABASE_PORT: ${DATABASE_PORT}
+    #   DATABASE_NAME: ${DATABASE_NAME}
+    #   DATABASE_USERNAME: ${DATABASE_USERNAME}
+    #   DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+    #   JWT_SECRET: ${JWT_SECRET}
+    #   ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+    #   APP_KEYS: ${APP_KEYS}
+    #   NODE_ENV: ${NODE_ENV}
     volumes:
-      - "./:/app"
-    working_dir: /app
-    command: "npm start"
+      - ./config:/opt/app/config
+      - ./src:/opt/app/src
+      - ./package.json:/opt/package.json
+      - ./yarn.lock:/opt/yarn.lock
+      - ./.env:/opt/app/.env
+      - ./public/uploads:/opt/app/public/uploads
     ports:
-      - "5000:5000"
+      - "1337:1337"
+    networks:
+      - strapi
+
+volumes:
+  strapi-data:
+
+networks:
+  strapi:
+    name: Strapi
+    driver: bridge
+
+# version: "3"
+ 
+# services:
+ 
+#   react:
+#     container_name: docker_strapi
+#     image: node:18-alpine
+#     build: ./
+#     volumes:
+#       - "./:/app"
+#     working_dir: /strapi-pg
+#     command: "npm start"
+#     ports:
+#       - "5000:5000"
