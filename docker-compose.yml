@@ -24,8 +24,8 @@ services:
       - ./yarn.lock:/opt/yarn.lock
       - ./.env:/opt/app/.env
       - ./public/uploads:/opt/app/public/uploads
-#    expose:
- #     - "5000"
+    ports:
+      - "80:80"
     networks:
       - strapi
 
