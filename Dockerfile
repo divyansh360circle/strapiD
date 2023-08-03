@@ -14,7 +14,7 @@ COPY . .
 RUN chown -R node:node /opt/app
 USER node
 RUN ["npm", "run", "build"]
-EXPOSE 5000
+#EXPOSE 5000
 CMD ["npm", "run", "develop"]
 
 # FROM node:18-alpine
